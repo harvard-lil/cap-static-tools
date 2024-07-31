@@ -1,0 +1,4 @@
+.env
+.idea/*
+source_target_paths.txt
+__pycache__
