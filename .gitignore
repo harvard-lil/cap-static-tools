@@ -2,3 +2,5 @@
 .idea/*
 source_target_paths.txt
 __pycache__
+tests/test_data/
+/venv/
