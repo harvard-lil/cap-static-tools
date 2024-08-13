@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-from tasks import zip_volumes, unredact
+from tasks import zip_volumes, unredact, split_pdfs
 
 
 ns = Collection()
