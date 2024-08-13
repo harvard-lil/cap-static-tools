@@ -11,3 +11,4 @@ from tasks import zip_volumes, unredact, split_pdfs
 ns = Collection()
 ns.add_collection(Collection.from_module(zip_volumes))
 ns.add_collection(Collection.from_module(unredact))
+ns.add_collection(Collection.from_module(split_pdfs))
