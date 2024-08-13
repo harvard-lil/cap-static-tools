@@ -4,11 +4,11 @@ from invoke import task
 
 from .helpers import get_volumes_metadata, get_reporter_volumes_metadata, R2_STATIC_BUCKET, R2_UNREDACTED_BUCKET, \
     RCLONE_R2_UNREDACTED_BASE_URL, RCLONE_R2_CAP_STATIC_BASE_URL, r2_paginator, r2_s3_client, write_paths_to_file, \
-    s3_paginator, S3_ARCHIVE_BUCKET, S3_PDF_FOLDER, RCLONE_S3_BASE_URL
+    s3_paginator, S3_ARCHIVE_BUCKET, S3_PDF_FOLDER, RCLONE_S3_BASE_URL, OBJECT_PATHS_FILE
 
 
 @task
-def pdf_paths(ctx, file_path="source_target_paths.txt"):
+def pdf_paths(ctx, file_path=OBJECT_PATHS_FILE):
     """ Create file path pairs to copy unredacted pdfs from S3 to unredacted r2 bucket. """
     volumes_metadata = json.loads(get_volumes_metadata())
     s3_files = {}
@@ -24,7 +24,7 @@ def pdf_paths(ctx, file_path="source_target_paths.txt"):
 
 
 @task
-def tar_paths(ctx, file_path="source_target_paths.txt"):
+def tar_paths(ctx, file_path=OBJECT_PATHS_FILE):
     """ Create file path pairs to copy unredacted tars to unredacted r2 bucket. """
     volumes_metadata = json.loads(get_volumes_metadata())
     deduped_s3_tars = filter_for_newest_tars()
@@ -37,7 +37,7 @@ def tar_paths(ctx, file_path="source_target_paths.txt"):
 
 
 @task
-def volume_paths(ctx, reporter=None, publication_year=None, file_path="source_target_paths.txt"):
+def volume_paths(ctx, reporter=None, publication_year=None, file_path=OBJECT_PATHS_FILE):
     """
     Create file path pairs to copy unredacted volume files from r2 unredacted bucket to static bucket.
     Must specify either reporter or publication_year.
@@ -229,7 +229,7 @@ def filter_for_newest_tars():
     """
     grouped_data = defaultdict(list)
 
-    for page in s3_paginator.paginate(Bucket=S3_ARCHIVE_BUCKET, Prefix=S3_CAPTAR_FOLDER, PaginationConfig={"PageSize": 1000}):
+    for page in s3_paginator.paginate(Bucket=S3_ARCHIVE_BUCKET, Prefix=S3_CAPTAR_UNREDACTED_FOLDER, PaginationConfig={"PageSize": 1000}):
         for item in page["Contents"]:
             volume_id = (item["Key"].split("/")[-1]).split("_unredacted")[0]
             ts_result = re.search(r"\d{4}_\d{2}_\d{2}_\d{2}\.\d{2}\.\d{2}", item["Key"])
