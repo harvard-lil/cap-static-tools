@@ -16,12 +16,13 @@ Use `inv` to run tasks defined in tasks.py:
       Available tasks:
         
           create-index-html.create-html              Creates and uploads index.html pages to the static bucket.
-          sync-static-bucket.tar-paths               Create file path pairs to copy tar files from s3 to r2 cap-static bucket.
-          unredact.pdf-paths                         Create file path pairs to copy unredacted pdfs from S3 to unredacted r2 bucket.
-          unredact.tar-paths                         Create file path pairs to copy unredacted tars to unredacted r2 bucket.
-          unredact.update-redacted-field-of-volume   Update the redacted flags in top level and reporter level metadata files
-          unredact.volume-paths                      Create file path pairs to copy unredacted volume files from r2 unredacted bucket to static bucket.
-          zip-volumes.zip-volumes (zip-volumes)      Download data for each volume from R2, zip, and upload.
+          sync-static-bucket.pdf-paths               Creates file path pairs to copy pdf files from s3 to r2 cap-static bucket.
+          sync-static-bucket.tar-paths               Creates file path pairs to copy tar files from s3 to r2 cap-static bucket.
+          unredact.pdf-paths                         Creates file path pairs to copy unredacted pdfs from S3 to r2 unredacted bucket.
+          unredact.tar-paths                         Creates file path pairs to copy unredacted tars to r2 unredacted bucket.
+          unredact.update-redacted-field-of-volume   Updates the redacted flags in top level and reporter level metadata files.
+          unredact.volume-paths                      Creates file path pairs to copy unredacted volume files from r2 unredacted bucket to static bucket.
+          zip-volumes.zip-volumes (zip-volumes)      Downloads data for each volume from r2, zips, and uploads.
           split-pdfs                                 Split PDFs into individual case files for all jurisdictions or a specific reporter.
 
 Use `inv <command name>` to run a command.
@@ -56,16 +57,3 @@ tasks/**init**.py.
 
 Add tests for each file in tasks/ to a file within tests/.
 
-## Legacy
-
-We still have some legacy tasks that were written for lambda. These should be
-migrated before running:
-
-### legacy/pdf folder:
-
-- **`copy-archive-data-to-r2-trigger`** lambda prepares the data and triggers
-  the file upload lambda in batches. Job expects the environment variables to be
-  set, and its execution role to have invoke access to the upload lambda.
-- **`copy-archive-data-to-r2`** lambda receives the event information and makes
-  file upload calls to R2 with S3 objects' content. Environment variables are
-  needed to be set.

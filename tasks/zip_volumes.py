@@ -14,7 +14,7 @@ zip_lock = threading.Lock()
 
 @task(default=True)
 def zip_volumes(r2_bucket):
-    """ Download data for each volume from R2, zip, and upload. """
+    """ Downloads data for each volume from r2, zips, and uploads. """
     volumes = json.loads(get_volumes_metadata(r2_bucket))
     volume_counter = 0
 
@@ -51,7 +51,6 @@ def zip_volumes(r2_bucket):
 
         volume_counter += 1
         print(f"{volume_counter}/{len(volumes)} were processed")
-
 
 
 def get_case_files_of_volume(reporter, volume, file_type, bucket):

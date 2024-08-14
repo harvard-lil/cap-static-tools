@@ -9,7 +9,7 @@ from .helpers import get_volumes_metadata, get_reporter_volumes_metadata, R2_STA
 
 @task
 def pdf_paths(ctx, file_path=OBJECT_PATHS_FILE):
-    """ Create file path pairs to copy unredacted pdfs from S3 to unredacted r2 bucket. """
+    """ Creates file path pairs to copy unredacted pdfs from S3 to r2 unredacted bucket. """
     volumes_metadata = json.loads(get_volumes_metadata())
     s3_files = {}
     for page in s3_paginator.paginate(Bucket=S3_ARCHIVE_BUCKET, Prefix=S3_PDF_FOLDER, PaginationConfig={"PageSize": 1000}):
@@ -25,7 +25,7 @@ def pdf_paths(ctx, file_path=OBJECT_PATHS_FILE):
 
 @task
 def tar_paths(ctx, file_path=OBJECT_PATHS_FILE):
-    """ Create file path pairs to copy unredacted tars to unredacted r2 bucket. """
+    """ Creates file path pairs to copy unredacted tars to r2 unredacted bucket. """
     volumes_metadata = json.loads(get_volumes_metadata())
     deduped_s3_tars = filter_for_newest_tars()
     extensions = [".tar", ".tar.csv", ".tar.sha256"]
@@ -39,7 +39,7 @@ def tar_paths(ctx, file_path=OBJECT_PATHS_FILE):
 @task
 def volume_paths(ctx, reporter=None, publication_year=None, file_path=OBJECT_PATHS_FILE):
     """
-    Create file path pairs to copy unredacted volume files from r2 unredacted bucket to static bucket.
+    Creates file path pairs to copy unredacted volume files from r2 unredacted bucket to static bucket.
     Must specify either reporter or publication_year.
     """
     if reporter and publication_year:
@@ -64,7 +64,7 @@ def volume_paths(ctx, reporter=None, publication_year=None, file_path=OBJECT_PAT
 @task
 def update_redacted_field_of_volume(ctx, reporter=None, publication_year=None, dry_run=False):
     """
-    Update the redacted flags in top level and reporter level metadata files
+    Updates the redacted flags in top level and reporter level metadata files.
     If dry_run is passed, won't proceed with the actual json file update
     """
     if reporter and publication_year:

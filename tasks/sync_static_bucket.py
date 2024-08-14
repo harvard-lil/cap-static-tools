@@ -13,6 +13,7 @@ from .helpers import (
     RCLONE_S3_BASE_URL,
     S3_CAPTAR_REDACTED_FOLDER,
     S3_CAPTAR_UNREDACTED_FOLDER,
+    S3_PDF_FOLDER,
     OBJECT_PATHS_FILE
 )
 
@@ -20,7 +21,7 @@ from .helpers import (
 @task
 def tar_paths(ctx, file_path=OBJECT_PATHS_FILE):
     """
-    Create file path pairs to copy tar files from s3 to r2 cap-static bucket.
+    Creates file path pairs to copy tar files from s3 to r2 cap-static bucket.
     """
     volumes_metadata = json.loads(get_volumes_metadata(R2_STATIC_BUCKET))
     deduped_s3_tars = filter_for_newest_tars()
@@ -29,6 +30,17 @@ def tar_paths(ctx, file_path=OBJECT_PATHS_FILE):
 
     for extension in extensions:
         volume_matches += get_volume_matches_for_artifacts(deduped_s3_tars, volumes_metadata, extension)
+    write_paths_to_file(volume_matches, file_path)
+
+
+@task
+def pdf_paths(ctx, file_path=OBJECT_PATHS_FILE):
+    """
+    Creates file path pairs to copy pdf files from s3 to r2 cap-static bucket.
+    """
+    pdf_files = get_s3_files(S3_ARCHIVE_BUCKET, S3_PDF_FOLDER)
+    volumes_metadata = json.loads(get_volumes_metadata(R2_STATIC_BUCKET))
+    volume_matches = get_volume_matches_for_pdfs(pdf_files, volumes_metadata)
     write_paths_to_file(volume_matches, file_path)
 
 
@@ -115,3 +127,48 @@ def filter_for_newest_tars():
             unique_items.append(newest_item)
 
     return {f"{file['volume_id']}/{file['redacted']}/{file['extension']}/": file for file in unique_items}
+
+
+def get_s3_files(bucket, path):
+    """
+    Creates a list of dictionaries for each volume pdf that are in the archive bucket
+    Pagination is needed as s3.list_objects_v2 can only return max 1000 records at a time
+    """
+    s3_files = []
+
+    for page in s3_paginator.paginate(Bucket=bucket, Prefix=path, PaginationConfig={"PageSize": 1000}):
+        for item in page["Contents"]:
+            s3_files.append(item["Key"])
+
+    return s3_files
+
+
+def get_volume_matches_for_pdfs(s3_files, volumes_metadata):
+    """
+    Finds volumes for which there are volume pdfs in the archive bucket
+    """
+    volume_matches = []
+
+    for volume in volumes_metadata:
+        unredacted_key = f"pdf/unredacted/{volume['id']}.pdf"
+        redacted_key = f"pdf/redacted/{volume['id']}.pdf"
+
+        if not volume["redacted"] and unredacted_key in s3_files:
+            volume_matches.append(
+                {
+                    "source": f"{RCLONE_S3_BASE_URL}{unredacted_key}",
+                    "destination": f"{RCLONE_R2_CAP_STATIC_BASE_URL}"
+                                   f"{volume['reporter_slug']}/{volume['volume_folder']}.pdf",
+                }
+            )
+        elif volume["redacted"] or unredacted_key not in s3_files:
+            if redacted_key in s3_files:
+                volume_matches.append(
+                    {
+                        "source": f"{RCLONE_S3_BASE_URL}{redacted_key}",
+                        "destination": f"{RCLONE_R2_CAP_STATIC_BASE_URL}"
+                                       f"{volume['reporter_slug']}/{volume['volume_folder']}.pdf",
+                    }
+                )
+
+    return volume_matches
