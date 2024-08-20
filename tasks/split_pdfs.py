@@ -49,7 +49,7 @@ def split_pdfs(ctx, reporter=None, publication_year=None, s3_client=None):
 
 
 def get_volumes_to_process(
-    reporter=None, publication_year=None, s3_client=None, r2_bucket=R2_UNREDACTED_BUCKET
+    reporter=None, publication_year=None, s3_client=None, r2_bucket=R2_STATIC_BUCKET
 ):
     volumes_metadata = json.loads(get_volumes_metadata(r2_bucket))
 
@@ -101,7 +101,7 @@ def get_cases_metadata(s3_client, bucket, volume):
 
 
 def process_volume(volume, s3_client=production_s3_client):
-    cases_metadata = get_cases_metadata(s3_client, R2_UNREDACTED_BUCKET, volume)
+    cases_metadata = get_cases_metadata(s3_client, R2_STATIC_BUCKET, volume)
 
     if not cases_metadata:
         print(f"Skipping volume {volume['volume_number']} due to missing metadata")
@@ -128,7 +128,7 @@ def process_volume(volume, s3_client=production_s3_client):
 def download_pdf(volume, local_path, s3_client=production_s3_client):
     key = f"{volume['reporter_slug']}/{volume['volume_folder']}/{volume['volume_number']}.pdf"
     try:
-        s3_client.download_file(R2_UNREDACTED_BUCKET, key, local_path)
+        s3_client.download_file(R2_STATIC_BUCKET, key, local_path)
     except Exception as e:
         print(
             f"Error downloading PDF for volume {volume['volume_number']} of {volume['reporter_slug']}: {str(e)}"
