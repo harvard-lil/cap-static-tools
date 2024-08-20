@@ -276,6 +276,9 @@ markupsafe==2.1.5 ; python_version >= "3.11" and python_version < "4.0" \
 moto==5.0.12 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:10bd434bfda329639fe9529470c4c27938064c139984024e6a62513e50aff427 \
     --hash=sha256:406095ba28da9e67e59bfc6b31b4a2627ca896d3e2c7eb82838fbe527e3c218a
+natsort==8.4.0 ; python_version >= "3.11" and python_version < "4.0" \
+    --hash=sha256:45312c4a0e5507593da193dedd04abb1469253b601ecaf63445ad80f0a1ea581 \
+    --hash=sha256:4732914fb471f56b5cce04d7bae6f164a592c7712e1c85f9ef585e197299521c
 numpy==2.0.1 ; python_version >= "3.12" and python_version < "4.0" or python_version == "3.11" \
     --hash=sha256:08458fbf403bff5e2b45f08eda195d4b0c9b35682311da5a5a0a0925b11b9bd8 \
     --hash=sha256:0fbb536eac80e27a2793ffd787895242b7f18ef792563d742c2d673bfcb75134 \
