@@ -18,6 +18,7 @@ from .helpers import (
 
 @task
 def split_pdfs(ctx, reporter=None, publication_year=None, s3_client=None):
+    """ Split PDFs into individual case files for all jurisdictions or a specific reporter. """
     print(
         f"Starting split_pdfs task for reporter: {reporter}, year: {publication_year}"
     )

@@ -47,7 +47,7 @@ def test_split_pdfs(mock_get_volumes_to_process, mock_get_volumes_metadata, s3_c
     test_volume = next(
         v
         for v in volumes_metadata
-        if v["reporter_slug"] == "cal" and v["volume_number"] == "1"
+        if v["reporter_slug"] == "a2d" and v["volume_number"] == "100"
     )
 
     mock_get_volumes_metadata.return_value = json.dumps(volumes_metadata)
@@ -74,7 +74,7 @@ def test_split_pdfs(mock_get_volumes_to_process, mock_get_volumes_metadata, s3_c
     print_bucket_contents(s3_client, R2_STATIC_BUCKET)
 
     # Print contents of the zip file
-    zip_key = "cal/1.zip"
+    zip_key = "a2d/100.zip"
     response = s3_client.get_object(Bucket=R2_UNREDACTED_BUCKET, Key=zip_key)
     with zipfile.ZipFile(io.BytesIO(response["Body"].read())) as zip_ref:
         print(f"Contents of {zip_key}:")
@@ -82,8 +82,8 @@ def test_split_pdfs(mock_get_volumes_to_process, mock_get_volumes_metadata, s3_c
             print(f"- {file}")
 
     # Choose a specific reporter and volume from your test data
-    reporter = "cal"
-    volume = "1"
+    reporter = "a2d"
+    volume = "100"
 
     # Create a MockContext with predetermined run results
     ctx = MockContext(

@@ -108,7 +108,7 @@ def update_redacted_field_of_volume(ctx, reporter=None, publication_year=None, d
                         volume["redacted"] = False
 
                 r2_s3_client.put_object(Bucket=R2_STATIC_BUCKET, Body=json.dumps(reporter_volumes_metadata),
-                                        Key=f"{item["reporter"]}/VolumesMetadata.json", ContentType="application/json")
+                                        Key=f"{item['reporter']}/VolumesMetadata.json", ContentType="application/json")
 
 
 def create_file_mappings_for_unredaction(reporter=None, publication_year=None):

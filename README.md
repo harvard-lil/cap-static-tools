@@ -8,19 +8,26 @@ Make a virtualenv of your choice, then:
 
     pip install -r requirements.txt
 
+or use [Poetry](https://python-poetry.org/); run
+
+    poetry install
+
+to set up the environment, then preface the following `invoke`
+commands with `poetry run `.
+
 ## Use
 
-Use `inv` to run tasks defined in tasks.py:
+Use `inv` to run tasks defined in `tasks/`:
 
     $ inv -l
       Available tasks:
         
+          split-pdfs.split-pdfs                      Split PDFs into individual case files for all jurisdictions or a specific reporter.
           unredact.pdf-paths                         Create file path pairs to copy unredacted pdfs from S3 to unredacted r2 bucket.
           unredact.tar-paths                         Create file path pairs to copy unredacted tars to unredacted r2 bucket.
           unredact.update-redacted-field-of-volume   Update the redacted flags in top level and reporter level metadata files
           unredact.volume-paths                      Create file path pairs to copy unredacted volume files from r2 unredacted bucket to static bucket.
           zip-volumes.zip-volumes (zip-volumes)      Download data for each volume from R2, zip, and upload.
-          split-pdfs                                 Split PDFs into individual case files for all jurisdictions or a specific reporter.
 
 Use `inv <command name>` to run a command.
 
@@ -41,14 +48,18 @@ Options:
 
 Examples:
 
-- Process all volumes: `inv split-pdfs`
-- Process volumes from a specific reporter: `inv split-pdfs --reporter cal`
-- Process volumes from a specific year: `inv split-pdfs --publication-year 2023`
+- Process all volumes: `inv split-pdfs.split-pdfs`
+- Process volumes from a specific reporter: `inv split-pdfs.split-pdfs --reporter cal`
+- Process volumes from a specific year: `inv split-pdfs.split-pdfs --publication-year 2023`
 
 ## Develop
 
-Add new tasks to a file within tasks/, grouped by subject, and import them in
-tasks/**init**.py.
+Add new tasks to a file within `tasks/`, grouped by subject, import them in
+`tasks/__init__.py`, and add them to the collection `ns`.
+
+Use Poetry to manage dependencies; for instance, add packages with
+`poetry add <package>`, but make sure to run `poetry export -o
+requirements.txt` to keep the non-Poetry requirements file up to date.
 
 ## Test
 
