@@ -72,7 +72,7 @@ def test_split_pdfs(mock_get_volumes_to_process, mock_get_volumes_metadata, s3_c
 
     # Print contents of the zip file
     zip_key = "a2d/100.zip"
-    response = s3_client.get_object(Bucket=R2_UNREDACTED_BUCKET, Key=zip_key)
+    response = s3_client.get_object(Bucket=R2_STATIC_BUCKET, Key=zip_key)
     with zipfile.ZipFile(io.BytesIO(response["Body"].read())) as zip_ref:
         print(f"Contents of {zip_key}:")
         for file in zip_ref.namelist():
