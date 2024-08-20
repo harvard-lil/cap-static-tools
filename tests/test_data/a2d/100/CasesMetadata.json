@@ -1,0 +1,1504 @@
+[
+  {
+    "id": 8118004,
+    "name": "PEYTON v. DISTRICT OF COLUMBIA",
+    "name_abbreviation": "Peyton v. District of Columbia",
+    "decision_date": "1953-11-06",
+    "docket_number": "No. 1389",
+    "first_page": "36",
+    "last_page": "38",
+    "citations": [
+      {
+        "type": "official",
+        "cite": "100 A.2d 36"
+      }
+    ],
+    "court": {
+      "name_abbreviation": "D.C.",
+      "id": 21806,
+      "name": "District of Columbia Municipal Court of Appeals"
+    },
+    "jurisdiction": {
+      "id": 56,
+      "name_long": "District of Columbia",
+      "name": "D.C."
+    },
+    "cites_to": [
+      {
+        "cite": "56 A.2d 851",
+        "category": "reporters:state_regional",
+        "reporter": "A.2d",
+        "case_ids": [
+          8166192
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/a2d/56/0851-01"
+        ]
+      },
+      {
+        "cite": "313 Ky. 374",
+        "category": "reporters:state",
+        "reporter": "Ky.",
+        "case_ids": [
+          2908142,
+          2905007
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/ky/313/0374-02",
+          "/ky/313/0374-01"
+        ]
+      },
+      {
+        "cite": "231 S.W.2d 86",
+        "category": "reporters:state_regional",
+        "reporter": "S.W.2d",
+        "opinion_index": 0
+      },
+      {
+        "cite": "125 Iowa 715",
+        "category": "reporters:state",
+        "reporter": "Iowa",
+        "case_ids": [
+          2140322
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/iowa/125/0715-01"
+        ]
+      },
+      {
+        "cite": "101 N.W. 637",
+        "category": "reporters:state_regional",
+        "reporter": "N.W.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "224 Minn. 346",
+        "category": "reporters:state",
+        "reporter": "Minn.",
+        "case_ids": [
+          381371
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/minn/224/0346-01"
+        ]
+      },
+      {
+        "cite": "28 N.W.2d 851",
+        "category": "reporters:state_regional",
+        "reporter": "N.W.2d",
+        "opinion_index": 0
+      },
+      {
+        "cite": "3 Ala.App. 114",
+        "category": "reporters:state",
+        "reporter": "Ala. App.",
+        "case_ids": [
+          1615550
+        ],
+        "weight": 2,
+        "opinion_index": 0,
+        "case_paths": [
+          "/ala-app/3/0114-01"
+        ]
+      },
+      {
+        "cite": "99 A.2d 754",
+        "category": "reporters:state_regional",
+        "reporter": "A.2d",
+        "case_ids": [
+          8149099
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/a2d/99/0754-01"
+        ]
+      },
+      {
+        "cite": "80 U.S.App.D.C. 67",
+        "category": "reporters:state",
+        "reporter": "U.S. App. D.C.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "149 F.2d 377",
+        "category": "reporters:federal",
+        "reporter": "F.2d",
+        "case_ids": [
+          3659233
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/f2d/149/0377-01"
+        ]
+      },
+      {
+        "cite": "62 App.D.C. 22",
+        "category": "reporters:state",
+        "reporter": "App. D.C.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "64 F.2d 145",
+        "category": "reporters:federal",
+        "reporter": "F.2d",
+        "case_ids": [
+          902776
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/f2d/64/0145-01"
+        ]
+      }
+    ],
+    "analysis": {
+      "cardinality": 414,
+      "char_count": 6202,
+      "ocr_confidence": 0.682,
+      "pagerank": {
+        "raw": 3.2370770418029585e-07,
+        "percentile": 0.8680870969697461
+      },
+      "sha256": "acd138db6ec2174fdf54606aec9cbd93592c9824c546c5c5b6ef3cd56dd4d967",
+      "simhash": "1:7ba2d0689777c3c1",
+      "word_count": 1046
+    },
+    "last_updated": "2024-02-27T23:46:10.534315+00:00",
+    "provenance": {
+      "date_added": "2019-08-29",
+      "source": "Harvard",
+      "batch": "2018"
+    },
+    "file_name": "0036-01",
+    "first_page_order": 72,
+    "last_page_order": 74
+  },
+  {
+    "id": 8118054,
+    "name": "BRANSON v. HARRIS",
+    "name_abbreviation": "Branson v. Harris",
+    "decision_date": "1953-11-06",
+    "docket_number": "No. 1379",
+    "first_page": "38",
+    "last_page": "40",
+    "citations": [
+      {
+        "type": "official",
+        "cite": "100 A.2d 38"
+      }
+    ],
+    "court": {
+      "name_abbreviation": "D.C.",
+      "id": 21806,
+      "name": "District of Columbia Municipal Court of Appeals"
+    },
+    "jurisdiction": {
+      "id": 56,
+      "name_long": "District of Columbia",
+      "name": "D.C."
+    },
+    "cites_to": [
+      {
+        "cite": "28 U.S.C.A. \u00a7 451",
+        "category": "laws:leg_statute",
+        "reporter": "U.S.C.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "96 F.Supp. 449",
+        "category": "reporters:federal",
+        "reporter": "F. Supp.",
+        "case_ids": [
+          1272897,
+          1409755
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/alaska/13/0227-01",
+          "/f-supp/96/0449-01"
+        ]
+      },
+      {
+        "cite": "277 U.S. 274",
+        "category": "reporters:federal",
+        "reporter": "U.S.",
+        "case_ids": [
+          3903140
+        ],
+        "weight": 3,
+        "opinion_index": 0,
+        "case_paths": [
+          "/us/277/0274-01"
+        ]
+      }
+    ],
+    "analysis": {
+      "cardinality": 301,
+      "char_count": 4415,
+      "ocr_confidence": 0.672,
+      "pagerank": {
+        "raw": 1.0301801021797942e-07,
+        "percentile": 0.5478831005205322
+      },
+      "sha256": "80e54975fa580e8164241bedc6839096266d280fef3fe3ad475b0af251f16817",
+      "simhash": "1:fd8fd404b3d00903",
+      "word_count": 744
+    },
+    "last_updated": "2024-02-27T23:46:10.534315+00:00",
+    "provenance": {
+      "date_added": "2019-08-29",
+      "source": "Harvard",
+      "batch": "2018"
+    },
+    "file_name": "0038-01",
+    "first_page_order": 74,
+    "last_page_order": 76
+  },
+  {
+    "id": 8118121,
+    "name": "UNITED STATES v. LEWIS",
+    "name_abbreviation": "United States v. Lewis",
+    "decision_date": "1953-11-06",
+    "docket_number": "No. 1387",
+    "first_page": "40",
+    "last_page": "42",
+    "citations": [
+      {
+        "type": "official",
+        "cite": "100 A.2d 40"
+      }
+    ],
+    "court": {
+      "name_abbreviation": "D.C.",
+      "id": 21806,
+      "name": "District of Columbia Municipal Court of Appeals"
+    },
+    "jurisdiction": {
+      "id": 56,
+      "name_long": "District of Columbia",
+      "name": "D.C."
+    },
+    "cites_to": [
+      {
+        "cite": "26 U.S.C. \u00a7 3285",
+        "category": "laws:leg_statute",
+        "reporter": "U.S.C.",
+        "pin_cites": [
+          {
+            "page": "et seq."
+          }
+        ],
+        "opinion_index": 0
+      },
+      {
+        "cite": "173 U.S. 509",
+        "category": "reporters:federal",
+        "reporter": "U.S.",
+        "case_ids": [
+          8298405
+        ],
+        "weight": 3,
+        "pin_cites": [
+          {
+            "page": "514"
+          },
+          {
+            "page": "525"
+          }
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/us/173/0509-01"
+        ]
+      },
+      {
+        "cite": "101 F.Supp. 531",
+        "category": "reporters:federal",
+        "reporter": "F. Supp.",
+        "case_ids": [
+          703267
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/f-supp/101/0531-01"
+        ]
+      },
+      {
+        "cite": "342 U.S. 939",
+        "category": "reporters:federal",
+        "reporter": "U.S.",
+        "case_ids": [
+          640647,
+          641212,
+          640741,
+          641007
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/us/342/0939-02",
+          "/us/342/0939-04",
+          "/us/342/0939-01",
+          "/us/342/0939-03"
+        ]
+      },
+      {
+        "cite": "72 S.Ct. 562",
+        "category": "reporters:federal",
+        "reporter": "S. Ct.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "96 L.Ed. 698",
+        "category": "reporters:federal",
+        "reporter": "L. Ed.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "345 U.S. 22",
+        "category": "reporters:federal",
+        "reporter": "U.S.",
+        "case_ids": [
+          372505
+        ],
+        "weight": 3,
+        "opinion_index": 0,
+        "case_paths": [
+          "/us/345/0022-01"
+        ]
+      },
+      {
+        "cite": "345 U.S. 931",
+        "category": "reporters:federal",
+        "reporter": "U.S.",
+        "case_ids": [
+          372777,
+          372687,
+          372943,
+          372849,
+          372440,
+          372895
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/us/345/0931-06",
+          "/us/345/0931-05",
+          "/us/345/0931-03",
+          "/us/345/0931-02",
+          "/us/345/0931-04",
+          "/us/345/0931-01"
+        ]
+      },
+      {
+        "cite": "73 S.Ct. 778",
+        "category": "reporters:federal",
+        "reporter": "S. Ct.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "11 F.Supp. 817",
+        "category": "reporters:federal",
+        "reporter": "F. Supp.",
+        "case_ids": [
+          4144258
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/f-supp/11/0817-01"
+        ]
+      },
+      {
+        "cite": "85 F.2d 560",
+        "category": "reporters:federal",
+        "reporter": "F.2d",
+        "opinion_index": 0
+      },
+      {
+        "cite": "13 F.Supp. 153",
+        "category": "reporters:federal",
+        "reporter": "F. Supp.",
+        "case_ids": [
+          4151022
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/f-supp/13/0153-01"
+        ]
+      },
+      {
+        "cite": "8 F.Supp. 393",
+        "category": "reporters:federal",
+        "reporter": "F. Supp.",
+        "case_ids": [
+          4140381
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/f-supp/8/0393-01"
+        ]
+      },
+      {
+        "cite": "57 F.2d 223",
+        "category": "reporters:federal",
+        "reporter": "F.2d",
+        "case_ids": [
+          1799246
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/f2d/57/0223-01"
+        ]
+      },
+      {
+        "cite": "22 F.Supp. 1017",
+        "category": "reporters:federal",
+        "reporter": "F. Supp.",
+        "case_ids": [
+          4167705
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/f-supp/22/1017-01"
+        ]
+      },
+      {
+        "cite": "111 F.Supp. 605",
+        "category": "reporters:federal",
+        "reporter": "F. Supp.",
+        "case_ids": [
+          303359
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/f-supp/111/0605-01"
+        ]
+      },
+      {
+        "cite": "107 F.Supp. 38",
+        "category": "reporters:federal",
+        "reporter": "F. Supp.",
+        "case_ids": [
+          316767
+        ],
+        "year": 1952,
+        "opinion_index": 0,
+        "case_paths": [
+          "/f-supp/107/0038-01"
+        ]
+      },
+      {
+        "cite": "106 F.Supp. 9",
+        "category": "reporters:federal",
+        "reporter": "F. Supp.",
+        "case_ids": [
+          321201
+        ],
+        "year": 1952,
+        "opinion_index": 0,
+        "case_paths": [
+          "/f-supp/106/0009-01"
+        ]
+      },
+      {
+        "cite": "105 F.Supp. 918",
+        "category": "reporters:federal",
+        "reporter": "F. Supp.",
+        "case_ids": [
+          329720
+        ],
+        "year": 1952,
+        "opinion_index": 0,
+        "case_paths": [
+          "/f-supp/105/0918-01"
+        ]
+      },
+      {
+        "cite": "105 F.Supp. 136",
+        "category": "reporters:federal",
+        "reporter": "F. Supp.",
+        "case_ids": [
+          329728
+        ],
+        "year": 1952,
+        "opinion_index": 0,
+        "case_paths": [
+          "/f-supp/105/0136-01"
+        ]
+      }
+    ],
+    "analysis": {
+      "cardinality": 570,
+      "char_count": 8576,
+      "ocr_confidence": 0.671,
+      "pagerank": {
+        "raw": 2.0293856215975368e-07,
+        "percentile": 0.7463828972268267
+      },
+      "sha256": "e865eb9e419a1ed7f164dd20d93325ea48e09b0da928a4fde9a0dff33ccd48e5",
+      "simhash": "1:25ccfe085e3699e3",
+      "word_count": 1428
+    },
+    "last_updated": "2024-02-27T23:46:10.534315+00:00",
+    "provenance": {
+      "date_added": "2019-08-29",
+      "source": "Harvard",
+      "batch": "2018"
+    },
+    "file_name": "0040-01",
+    "first_page_order": 76,
+    "last_page_order": 78
+  },
+  {
+    "id": 8124566,
+    "name": "SAVAGE et al. v. PARKS et al.; PARKS et al. v. SAVAGE et al.",
+    "name_abbreviation": "Savage v. Parks",
+    "decision_date": "1953-11-18",
+    "docket_number": "Nos. 1383, 1384",
+    "first_page": "450",
+    "last_page": "452",
+    "citations": [
+      {
+        "type": "official",
+        "cite": "100 A.2d 450"
+      }
+    ],
+    "court": {
+      "name_abbreviation": "D.C.",
+      "id": 21806,
+      "name": "District of Columbia Municipal Court of Appeals"
+    },
+    "jurisdiction": {
+      "id": 56,
+      "name_long": "District of Columbia",
+      "name": "D.C."
+    },
+    "cites_to": [
+      {
+        "cite": "143 Md. 650",
+        "category": "reporters:state",
+        "reporter": "Md.",
+        "case_ids": [
+          2139100
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/md/143/0650-01"
+        ]
+      },
+      {
+        "cite": "123 A. 47",
+        "category": "reporters:state_regional",
+        "reporter": "A.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "60 A.2d 926",
+        "category": "reporters:state_regional",
+        "reporter": "A.2d",
+        "case_ids": [
+          8165792
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/a2d/60/0926-01"
+        ]
+      },
+      {
+        "cite": "53 A.2d 695",
+        "category": "reporters:state_regional",
+        "reporter": "A.2d",
+        "case_ids": [
+          8159524
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/a2d/53/0695-01"
+        ]
+      },
+      {
+        "cite": "83 U.S.App.D.C. 400",
+        "category": "reporters:state",
+        "reporter": "U.S. App. D.C.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "168 F.2d 574",
+        "category": "reporters:federal",
+        "reporter": "F.2d",
+        "case_ids": [
+          1278291
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/f2d/168/0574-01"
+        ]
+      },
+      {
+        "cite": "130 Md. 376",
+        "category": "reporters:state",
+        "reporter": "Md.",
+        "case_ids": [
+          2152029
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/md/130/0376-01"
+        ]
+      },
+      {
+        "cite": "100 A. 628",
+        "category": "reporters:state_regional",
+        "reporter": "A.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "144 Md. 62",
+        "category": "reporters:state",
+        "reporter": "Md.",
+        "case_ids": [
+          2140568
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/md/144/0062-01"
+        ]
+      },
+      {
+        "cite": "124 A. 389",
+        "category": "reporters:state_regional",
+        "reporter": "A.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "195 Md. 226",
+        "category": "reporters:state",
+        "reporter": "Md.",
+        "case_ids": [
+          2223922
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/md/195/0226-01"
+        ]
+      },
+      {
+        "cite": "72 A.2d 701",
+        "category": "reporters:state_regional",
+        "reporter": "A.2d",
+        "opinion_index": 0
+      },
+      {
+        "cite": "334 U.S. 1",
+        "category": "reporters:federal",
+        "reporter": "U.S.",
+        "case_ids": [
+          6157293
+        ],
+        "weight": 2,
+        "opinion_index": 0,
+        "case_paths": [
+          "/us/334/0001-01"
+        ]
+      },
+      {
+        "cite": "92 L.Ed. 1161",
+        "category": "reporters:federal",
+        "reporter": "L. Ed.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "334 U.S. 24",
+        "category": "reporters:federal",
+        "reporter": "U.S.",
+        "case_ids": [
+          6157319
+        ],
+        "weight": 2,
+        "opinion_index": 0,
+        "case_paths": [
+          "/us/334/0024-01"
+        ]
+      },
+      {
+        "cite": "92 L.Ed. 1187",
+        "category": "reporters:federal",
+        "reporter": "L. Ed.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "45 A.2d 478",
+        "category": "reporters:state_regional",
+        "reporter": "A.2d",
+        "case_ids": [
+          8157306
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/a2d/45/0478-01"
+        ]
+      },
+      {
+        "cite": "62 A.2d 553",
+        "category": "reporters:state_regional",
+        "reporter": "A.2d",
+        "case_ids": [
+          8156834
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/a2d/62/0553-01"
+        ]
+      }
+    ],
+    "analysis": {
+      "cardinality": 430,
+      "char_count": 6589,
+      "ocr_confidence": 0.664,
+      "pagerank": {
+        "raw": 4.03580807328026e-08,
+        "percentile": 0.20082811777829518
+      },
+      "sha256": "b61644c62ea9a80eb1b6e5f695361cf72b59484a215455777781b9bef4bd3703",
+      "simhash": "1:6a6172893ae9d3f9",
+      "word_count": 1125
+    },
+    "last_updated": "2024-02-27T23:46:10.534315+00:00",
+    "provenance": {
+      "date_added": "2019-08-29",
+      "source": "Harvard",
+      "batch": "2018"
+    },
+    "file_name": "0450-01",
+    "first_page_order": 486,
+    "last_page_order": 488
+  },
+  {
+    "id": 8124651,
+    "name": "NOWINSKI v. RANDALL H. HAGNER & CO., Inc.",
+    "name_abbreviation": "Nowinski v. Randall H. Hagner & Co.",
+    "decision_date": "1953-11-18",
+    "docket_number": "No. 1390",
+    "first_page": "452",
+    "last_page": "454",
+    "citations": [
+      {
+        "type": "official",
+        "cite": "100 A.2d 452"
+      }
+    ],
+    "court": {
+      "name_abbreviation": "D.C.",
+      "id": 21806,
+      "name": "District of Columbia Municipal Court of Appeals"
+    },
+    "jurisdiction": {
+      "id": 56,
+      "name_long": "District of Columbia",
+      "name": "D.C."
+    },
+    "cites_to": [
+      {
+        "cite": "32 A.2d 707",
+        "category": "reporters:state_regional",
+        "reporter": "A.2d",
+        "case_ids": [
+          8157314
+        ],
+        "pin_cites": [
+          {
+            "page": "709"
+          }
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/a2d/32/0707-01"
+        ]
+      },
+      {
+        "cite": "99 A.2d 712",
+        "category": "reporters:state_regional",
+        "reporter": "A.2d",
+        "case_ids": [
+          8148733
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/a2d/99/0712-01"
+        ]
+      },
+      {
+        "cite": "99 A.2d 754",
+        "category": "reporters:state_regional",
+        "reporter": "A.2d",
+        "case_ids": [
+          8149099
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/a2d/99/0754-01"
+        ]
+      },
+      {
+        "cite": "34 A.2d 359",
+        "category": "reporters:state_regional",
+        "reporter": "A.2d",
+        "case_ids": [
+          8152914
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/a2d/34/0359-01"
+        ]
+      },
+      {
+        "cite": "54 App.D.C. 152",
+        "category": "reporters:state",
+        "reporter": "App. D.C.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "295 F. 973",
+        "category": "reporters:federal",
+        "reporter": "F.",
+        "case_ids": [
+          3633118
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/f/295/0973-01"
+        ]
+      },
+      {
+        "cite": "55 A.2d 138",
+        "category": "reporters:state_regional",
+        "reporter": "A.2d",
+        "case_ids": [
+          8153007
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/a2d/55/0138-01"
+        ]
+      }
+    ],
+    "analysis": {
+      "cardinality": 363,
+      "char_count": 4958,
+      "ocr_confidence": 0.667,
+      "pagerank": {
+        "raw": 4.03580807328026e-08,
+        "percentile": 0.20082869696264144
+      },
+      "sha256": "b75c6b0a845cfa461991668a01d8c33968873a0aa82ca5788b8558e954376196",
+      "simhash": "1:0622f80ec3664d7a",
+      "word_count": 855
+    },
+    "last_updated": "2024-02-27T23:46:10.534315+00:00",
+    "provenance": {
+      "date_added": "2019-08-29",
+      "source": "Harvard",
+      "batch": "2018"
+    },
+    "file_name": "0452-01",
+    "first_page_order": 488,
+    "last_page_order": 490
+  },
+  {
+    "id": 8124744,
+    "name": "SEABOARD FINANCE CO. v. RUPPERT",
+    "name_abbreviation": "Seaboard Finance Co. v. Ruppert",
+    "decision_date": "1953-11-18",
+    "docket_number": "No. 1391",
+    "first_page": "454",
+    "last_page": "455",
+    "citations": [
+      {
+        "type": "official",
+        "cite": "100 A.2d 454"
+      }
+    ],
+    "court": {
+      "name_abbreviation": "D.C.",
+      "id": 21806,
+      "name": "District of Columbia Municipal Court of Appeals"
+    },
+    "jurisdiction": {
+      "id": 56,
+      "name_long": "District of Columbia",
+      "name": "D.C."
+    },
+    "cites_to": [
+      {
+        "cite": "60 App.D.C. 82",
+        "category": "reporters:state",
+        "reporter": "App. D.C.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "47 F.2d 978",
+        "category": "reporters:federal",
+        "reporter": "F.2d",
+        "case_ids": [
+          1835344
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/f2d/47/0978-01"
+        ]
+      },
+      {
+        "cite": "70 App.D.C. 351",
+        "category": "reporters:state",
+        "reporter": "App. D.C.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "107 F.2d 177",
+        "category": "reporters:federal",
+        "reporter": "F.2d",
+        "case_ids": [
+          1046410
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/f2d/107/0177-01"
+        ]
+      },
+      {
+        "cite": "71 App.D.C. 106",
+        "category": "reporters:state",
+        "reporter": "App. D.C.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "108 F.2d 4",
+        "category": "reporters:federal",
+        "reporter": "F.2d",
+        "case_ids": [
+          1042109
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/f2d/108/0004-01"
+        ]
+      },
+      {
+        "cite": "66 Stat. 59",
+        "category": "laws:leg_session",
+        "reporter": "Stat.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "75 A.2d 780",
+        "category": "reporters:state_regional",
+        "reporter": "A.2d",
+        "case_ids": [
+          8152726
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/a2d/75/0780-01"
+        ]
+      }
+    ],
+    "analysis": {
+      "cardinality": 364,
+      "char_count": 4455,
+      "ocr_confidence": 0.658,
+      "pagerank": {
+        "raw": 6.380125665320789e-08,
+        "percentile": 0.39439114017844284
+      },
+      "sha256": "7af4fb04013d0a19f72d8eb2d56f6e45bad0e929b6cd709facd4680d11f946ee",
+      "simhash": "1:581ba1f5357e1c77",
+      "word_count": 742
+    },
+    "last_updated": "2024-02-27T23:46:10.534315+00:00",
+    "provenance": {
+      "date_added": "2019-08-29",
+      "source": "Harvard",
+      "batch": "2018"
+    },
+    "file_name": "0454-01",
+    "first_page_order": 490,
+    "last_page_order": 491
+  },
+  {
+    "id": 8124836,
+    "name": "PENNSYLVANIA R. CO. v. NEWMYER et al.",
+    "name_abbreviation": "Pennsylvania R. v. Newmyer",
+    "decision_date": "1953-11-20",
+    "docket_number": "No. 1380",
+    "first_page": "456",
+    "last_page": "459",
+    "citations": [
+      {
+        "type": "official",
+        "cite": "100 A.2d 456"
+      }
+    ],
+    "court": {
+      "name_abbreviation": "D.C.",
+      "id": 21806,
+      "name": "District of Columbia Municipal Court of Appeals"
+    },
+    "jurisdiction": {
+      "id": 56,
+      "name_long": "District of Columbia",
+      "name": "D.C."
+    },
+    "cites_to": [
+      {
+        "cite": "85 S.C. 19",
+        "category": "reporters:state",
+        "reporter": "S.C.",
+        "case_ids": [
+          1929885
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/sc/85/0019-01"
+        ]
+      },
+      {
+        "cite": "67 S.E. 11",
+        "category": "reporters:state_regional",
+        "reporter": "S.E.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "51 A.2d 379",
+        "category": "reporters:state_regional",
+        "reporter": "A.2d",
+        "case_ids": [
+          8155374
+        ],
+        "weight": 2,
+        "opinion_index": 0,
+        "case_paths": [
+          "/a2d/51/0379-01"
+        ]
+      },
+      {
+        "cite": "24 Stat. 386",
+        "category": "laws:leg_session",
+        "reporter": "Stat.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "49 U.S.C.A. \u00a7 20",
+        "category": "laws:leg_statute",
+        "reporter": "U.S.C.",
+        "pin_cites": [
+          {
+            "page": "(11)"
+          }
+        ],
+        "opinion_index": 0
+      },
+      {
+        "cite": "268 U.S. 85",
+        "category": "reporters:federal",
+        "reporter": "U.S.",
+        "case_ids": [
+          13129
+        ],
+        "weight": 3,
+        "opinion_index": 0,
+        "case_paths": [
+          "/us/268/0085-01"
+        ]
+      },
+      {
+        "cite": "79 Ind.App. 462",
+        "category": "reporters:state",
+        "reporter": "Ind. App.",
+        "case_ids": [
+          2506519
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/ind-app/79/0462-01"
+        ]
+      },
+      {
+        "cite": "138 N.E. 785",
+        "category": "reporters:state_regional",
+        "reporter": "N.E.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "141 Miss. 199",
+        "category": "reporters:state",
+        "reporter": "Miss.",
+        "case_ids": [
+          1684497
+        ],
+        "weight": 2,
+        "opinion_index": 0,
+        "case_paths": [
+          "/miss/141/0199-01"
+        ]
+      },
+      {
+        "cite": "69 S.W.2d 803",
+        "category": "reporters:state_regional",
+        "reporter": "S.W.2d",
+        "case_ids": [
+          10259439
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/sw2d/69/0803-01"
+        ]
+      },
+      {
+        "cite": "238 U.S. 202",
+        "category": "reporters:federal",
+        "reporter": "U.S.",
+        "case_ids": [
+          3676131
+        ],
+        "weight": 3,
+        "pin_cites": [
+          {
+            "page": "212"
+          }
+        ],
+        "opinion_index": 1,
+        "case_paths": [
+          "/us/238/0202-01"
+        ]
+      },
+      {
+        "cite": "43 A.L.R. 1192",
+        "category": "reporters:specialty",
+        "reporter": "A.L.R.",
+        "opinion_index": 1
+      },
+      {
+        "cite": "327 U.S. 251",
+        "category": "reporters:federal",
+        "reporter": "U.S.",
+        "case_ids": [
+          413888,
+          413877
+        ],
+        "opinion_index": 1,
+        "case_paths": [
+          "/us/327/0817-06",
+          "/us/327/0251-01"
+        ]
+      },
+      {
+        "cite": "66 S.Ct. 574",
+        "category": "reporters:federal",
+        "reporter": "S. Ct.",
+        "case_ids": [
+          413888
+        ],
+        "weight": 2,
+        "opinion_index": 1,
+        "case_paths": [
+          "/us/327/0817-06"
+        ]
+      },
+      {
+        "cite": "327 U.S. 817",
+        "category": "reporters:federal",
+        "reporter": "U.S.",
+        "case_ids": [
+          414048,
+          413888,
+          414081,
+          413989,
+          413806,
+          413934,
+          413813,
+          413849,
+          413883
+        ],
+        "opinion_index": 1,
+        "case_paths": [
+          "/us/327/0817-02",
+          "/us/327/0817-06",
+          "/us/327/0817-03",
+          "/us/327/0817-01",
+          "/us/327/0817-08",
+          "/us/327/0817-09",
+          "/us/327/0817-04",
+          "/us/327/0817-07",
+          "/us/327/0817-05"
+        ]
+      },
+      {
+        "cite": "66 S.Ct. 815",
+        "category": "reporters:federal",
+        "reporter": "S. Ct.",
+        "opinion_index": 1
+      },
+      {
+        "cite": "90 L.Ed. 1040",
+        "category": "reporters:federal",
+        "reporter": "L. Ed.",
+        "opinion_index": 1
+      },
+      {
+        "cite": "273 U.S. 359",
+        "category": "reporters:federal",
+        "reporter": "U.S.",
+        "case_ids": [
+          6142042
+        ],
+        "weight": 4,
+        "opinion_index": 1,
+        "case_paths": [
+          "/us/273/0359-01"
+        ]
+      },
+      {
+        "cite": "38 A.2d 626",
+        "category": "reporters:state_regional",
+        "reporter": "A.2d",
+        "case_ids": [
+          8138988
+        ],
+        "opinion_index": 1,
+        "case_paths": [
+          "/a2d/38/0626-01"
+        ]
+      }
+    ],
+    "analysis": {
+      "cardinality": 601,
+      "char_count": 9531,
+      "ocr_confidence": 0.673,
+      "pagerank": {
+        "raw": 4.03580807328026e-08,
+        "percentile": 0.20082946920843647
+      },
+      "sha256": "e5e01c9dae2d3b067c006410086cdbd8667b7678021931289bfabb7e8e97d01e",
+      "simhash": "1:2a98920235a5fadf",
+      "word_count": 1630
+    },
+    "last_updated": "2024-02-27T23:46:10.534315+00:00",
+    "provenance": {
+      "date_added": "2019-08-29",
+      "source": "Harvard",
+      "batch": "2018"
+    },
+    "file_name": "0456-01",
+    "first_page_order": 492,
+    "last_page_order": 495
+  },
+  {
+    "id": 8130688,
+    "name": "BERRY v. KEITH",
+    "name_abbreviation": "Berry v. Keith",
+    "decision_date": "1953-11-25",
+    "docket_number": "No. 1388",
+    "first_page": "831",
+    "last_page": "833",
+    "citations": [
+      {
+        "type": "official",
+        "cite": "100 A.2d 831"
+      }
+    ],
+    "court": {
+      "name_abbreviation": "D.C.",
+      "id": 21806,
+      "name": "District of Columbia Municipal Court of Appeals"
+    },
+    "jurisdiction": {
+      "id": 56,
+      "name_long": "District of Columbia",
+      "name": "D.C."
+    },
+    "cites_to": [
+      {
+        "cite": "64 A.2d 300",
+        "category": "reporters:state_regional",
+        "reporter": "A.2d",
+        "case_ids": [
+          8141364
+        ],
+        "weight": 2,
+        "opinion_index": 0,
+        "case_paths": [
+          "/a2d/64/0300-01"
+        ]
+      },
+      {
+        "cite": "78 U.S.App.D.C. 271",
+        "category": "reporters:state",
+        "reporter": "U.S. App. D.C.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "140 F.2d 13",
+        "category": "reporters:federal",
+        "reporter": "F.2d",
+        "case_ids": [
+          3690388
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/f2d/140/0013-01"
+        ]
+      },
+      {
+        "cite": "322 U.S. 755",
+        "category": "reporters:federal",
+        "reporter": "U.S.",
+        "case_ids": [
+          6156852,
+          6156821,
+          6156791,
+          6156765,
+          6156734
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/us/322/0755-05",
+          "/us/322/0755-04",
+          "/us/322/0755-03",
+          "/us/322/0755-02",
+          "/us/322/0755-01"
+        ]
+      },
+      {
+        "cite": "64 S.Ct. 1270",
+        "category": "reporters:federal",
+        "reporter": "S. Ct.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "88 L.Ed. 1584",
+        "category": "reporters:federal",
+        "reporter": "L. Ed.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "89 A.2d 885",
+        "category": "reporters:state_regional",
+        "reporter": "A.2d",
+        "case_ids": [
+          8141248
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/a2d/89/0885-01"
+        ]
+      },
+      {
+        "cite": "95 A.2d 330",
+        "category": "reporters:state_regional",
+        "reporter": "A.2d",
+        "case_ids": [
+          8144321
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/a2d/95/0330-01"
+        ]
+      },
+      {
+        "cite": "32 A.2d 110",
+        "category": "reporters:state_regional",
+        "reporter": "A.2d",
+        "case_ids": [
+          8149508
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/a2d/32/0110-01"
+        ]
+      },
+      {
+        "cite": "61 App.D.C. 247",
+        "category": "reporters:state",
+        "reporter": "App. D.C.",
+        "opinion_index": 0
+      },
+      {
+        "cite": "61 F.2d 327",
+        "category": "reporters:federal",
+        "reporter": "F.2d",
+        "case_ids": [
+          911559
+        ],
+        "opinion_index": 0,
+        "case_paths": [
+          "/f2d/61/0327-01"
+        ]
+      }
+    ],
+    "analysis": {
+      "cardinality": 443,
+      "char_count": 7003,
+      "ocr_confidence": 0.679,
+      "pagerank": {
+        "raw": 1.1278676869081294e-07,
+        "percentile": 0.5750435643159119
+      },
+      "sha256": "0e4a45945dd5316610d426a749b2d14b3dcdae567350204f3cd8f3cbdbfb6e1c",
+      "simhash": "1:8177c559bf14a5b1",
+      "word_count": 1226
+    },
+    "last_updated": "2024-02-27T23:46:10.534315+00:00",
+    "provenance": {
+      "date_added": "2019-08-29",
+      "source": "Harvard",
+      "batch": "2018"
+    },
+    "file_name": "0831-01",
+    "first_page_order": 867,
+    "last_page_order": 869
+  },
+  {
+    "id": 8130740,
+    "name": "CLARKE v. DISTRICT OF COLUMBIA",
+    "name_abbreviation": "Clarke v. District of Columbia",
+    "decision_date": "1953-12-04",
+    "docket_number": "No. 1400",
+    "first_page": "833",
+    "last_page": "834",
+    "citations": [
+      {
+        "type": "official",
+        "cite": "100 A.2d 833"
+      }
+    ],
+    "court": {
+      "name_abbreviation": "D.C.",
+      "id": 21806,
+      "name": "District of Columbia Municipal Court of Appeals"
+    },
+    "jurisdiction": {
+      "id": 56,
+      "name_long": "District of Columbia",
+      "name": "D.C."
+    },
+    "cites_to": [],
+    "analysis": {
+      "cardinality": 145,
+      "char_count": 1567,
+      "ocr_confidence": 0.674,
+      "sha256": "31395556049ff9916a1fcb9ff6338137868eece8d8ef304fe2bc946affb13f51",
+      "simhash": "1:2f9d5ff277071776",
+      "word_count": 256
+    },
+    "last_updated": "2023-07-14T22:38:30.946691+00:00",
+    "provenance": {
+      "date_added": "2019-08-29",
+      "source": "Harvard",
+      "batch": "2018"
+    },
+    "file_name": "0833-01",
+    "first_page_order": 869,
+    "last_page_order": 870
+  }
+]
