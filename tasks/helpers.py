@@ -1,14 +1,10 @@
 import os
-import re
-from collections import defaultdict
-
 import boto3
 from botocore.exceptions import ClientError
 
 # config
 S3_ARCHIVE_BUCKET = os.environ.get("S3_ARCHIVE_BUCKET")
 S3_PDF_FOLDER = os.environ.get("S3_PDF_FOLDER")
-S3_CAPTAR_FOLDER = os.environ.get("S3_CAPTAR_FOLDER")
 S3_ACCESS_KEY = os.environ.get("S3_ACCESS_KEY")
 S3_ACCESS_KEY_ID = os.environ.get("S3_ACCESS_KEY_ID")
 R2_STORAGE = os.environ.get("R2_STORAGE")
@@ -19,12 +15,20 @@ R2_UNREDACTED_BUCKET = os.environ.get("R2_UNREDACTED_BUCKET")
 RCLONE_S3_BASE_URL = f"cap_s3:{S3_ARCHIVE_BUCKET}/"
 RCLONE_R2_UNREDACTED_BASE_URL = f"cap_r2:{R2_UNREDACTED_BUCKET}/"
 RCLONE_R2_CAP_STATIC_BASE_URL = f"cap_r2:{R2_STATIC_BUCKET}/"
+S3_CAPTAR_REDACTED_FOLDER = os.environ.get("S3_CAPTAR_REDACTED_FOLDER")
+S3_CAPTAR_UNREDACTED_FOLDER = os.environ.get("S3_CAPTAR_UNREDACTED_FOLDER")
+S3_PDF_FOLDER = os.environ.get("S3_PDF_FOLDER")
+OBJECT_PATHS_FILE = os.environ.get("OBJECT_PATHS_FILE")
+CAP_STATIC_BASE_URL = os.environ.get("CAP_STATIC_BASE_URL")
 
 # clients
 s3_client = boto3.client(
-    "s3", aws_access_key_id=S3_ACCESS_KEY_ID, aws_secret_access_key=S3_ACCESS_KEY
+    "s3",
+    aws_access_key_id=S3_ACCESS_KEY_ID,
+    aws_secret_access_key=S3_ACCESS_KEY
 )
 s3_paginator = s3_client.get_paginator("list_objects_v2")
+
 r2_s3_client = boto3.client(
     service_name="s3",
     endpoint_url=R2_STORAGE,
@@ -43,7 +47,15 @@ def get_volumes_metadata(r2_bucket=R2_UNREDACTED_BUCKET):
     return volumes_metadata["Body"].read().decode("utf-8")
 
 
-def write_paths_to_file(files, file_name="source_target_paths.txt"):
+def get_reporters_metadata(r2_bucket=R2_UNREDACTED_BUCKET):
+    """
+    Gets the root level VolumesMetadata.json contents
+    """
+    reporters_metadata = r2_s3_client.get_object(Bucket=r2_bucket, Key="ReportersMetadata.json")
+    return reporters_metadata["Body"].read().decode("utf-8")
+
+
+def write_paths_to_file(files, file_name=OBJECT_PATHS_FILE):
     """
     Writes the source and destination file paths to a txt file
     """
@@ -66,4 +78,16 @@ def get_reporter_volumes_metadata(bucket, reporter):
         print(f"Reporter volume metadata not found in {bucket} bucket: {key}: {e}")
         return
 
+
+def get_reporter_files(reporter):
+    """
+    Gets all files of a reporter
+    """
+    files = []
+
+    for page in r2_paginator.paginate(Bucket=R2_STATIC_BUCKET, Prefix=f"{reporter}/", PaginationConfig={"PageSize": 1000}):
+        for item in page["Contents"]:
+            files.append(item["Key"])
+
+    return files
 
