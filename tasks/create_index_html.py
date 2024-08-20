@@ -207,12 +207,12 @@ def get_volume_files(volumes):
     files = []
 
     for volume in volumes:
-        prefix = f"{volume["reporter_slug"]}/{volume["volume_folder"]}/"
+        prefix = f"{volume['reporter_slug']}/{volume['volume_folder']}/"
         for page in r2_paginator.paginate(Bucket=R2_STATIC_BUCKET, Prefix=prefix, PaginationConfig={"PageSize": 1000}):
             for item in page["Contents"]:
                 # exclude /index.html as we don't want to display it among the volume files
                 if "/index.html" not in item["Key"]:
-                    files.append({"key": item["Key"], "file_size": f"{round(item["Size"] / 1024, 2)} KB",
+                    files.append({"key": item["Key"], "file_size": f"{round(item['Size'] / 1024, 2)} KB",
                                   "last_modified": convert_time(item["LastModified"])})
 
     return files
