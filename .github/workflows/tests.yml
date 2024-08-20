@@ -42,5 +42,4 @@ jobs:
           set -x
           poetry run pytest
         env:
-          R2_STATIC_BUCKET: input
           R2_STATIC_BUCKET: output
