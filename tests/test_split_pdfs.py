@@ -10,7 +10,7 @@ import io
 import zipfile
 
 from tasks.split_pdfs import split_pdfs
-from tasks.helpers import R2_STATIC_BUCKET
+from tasks.helpers import R2_STATIC_BUCKET, R2_SPLIT_PDFS_BUCKET
 
 
 def print_bucket_contents(s3_client, bucket_name):
@@ -54,6 +54,7 @@ def test_split_pdfs(mock_get_volumes_to_process, mock_get_volumes_metadata, s3_c
 
     # Create mock bucket
     s3_client.create_bucket(Bucket=R2_STATIC_BUCKET)
+    s3_client.create_bucket(Bucket=R2_SPLIT_PDFS_BUCKET)
 
     # Test if mock S3 client is working
     s3_client.put_object(
@@ -104,10 +105,11 @@ def test_split_pdfs(mock_get_volumes_to_process, mock_get_volumes_metadata, s3_c
     # Print the contents of the bucket after running split_pdfs
     print("\nBucket contents after running split_pdfs:")
     print_bucket_contents(s3_client, R2_STATIC_BUCKET)
+    print_bucket_contents(s3_client, R2_SPLIT_PDFS_BUCKET)
 
     # Check if case PDFs were created in the static bucket
-    objects = s3_client.list_objects_v2(Bucket=R2_STATIC_BUCKET)
-    print(f"Objects in R2_STATIC_BUCKET: {objects}")
+    objects = s3_client.list_objects_v2(Bucket=R2_SPLIT_PDFS_BUCKET)
+    print(f"Objects in R2_SPLIT_PDFS_BUCKET: {objects}")
 
     assert "Contents" in objects, "No objects found in static bucket"
 
@@ -127,7 +129,7 @@ def test_split_pdfs(mock_get_volumes_to_process, mock_get_volumes_metadata, s3_c
 
     if case_pdf_keys:
         sample_key = case_pdf_keys[0]
-        response = s3_client.get_object(Bucket=R2_STATIC_BUCKET, Key=sample_key)
+        response = s3_client.get_object(Bucket=R2_SPLIT_PDFS_BUCKET, Key=sample_key)
         content = response["Body"].read()
         print(f"\nContent of {sample_key}:")
         print(content[:100])

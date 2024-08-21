@@ -12,13 +12,16 @@ from .helpers import (
     r2_s3_client as production_s3_client,
     get_volumes_metadata,
     R2_STATIC_BUCKET,
-    R2_UNREDACTED_BUCKET,
+    R2_SPLIT_PDFS_BUCKET,
 )
+
+READ_BUCKET = R2_STATIC_BUCKET
+WRITE_BUCKET = R2_SPLIT_PDFS_BUCKET
 
 
 @task
 def split_pdfs(ctx, reporter=None, publication_year=None, s3_client=None):
-    """ Split PDFs into individual case files for all jurisdictions or a specific reporter. """
+    """Split PDFs into individual case files for all jurisdictions or a specific reporter."""
     print(
         f"Starting split_pdfs task for reporter: {reporter}, year: {publication_year}"
     )
@@ -50,7 +53,7 @@ def split_pdfs(ctx, reporter=None, publication_year=None, s3_client=None):
 
 
 def get_volumes_to_process(
-    reporter=None, publication_year=None, s3_client=None, r2_bucket=R2_STATIC_BUCKET
+    reporter=None, publication_year=None, s3_client=None, r2_bucket=READ_BUCKET
 ):
     volumes_metadata = json.loads(get_volumes_metadata(r2_bucket))
 
@@ -102,7 +105,7 @@ def get_cases_metadata(s3_client, bucket, volume):
 
 
 def process_volume(volume, s3_client=production_s3_client):
-    cases_metadata = get_cases_metadata(s3_client, R2_STATIC_BUCKET, volume)
+    cases_metadata = get_cases_metadata(s3_client, READ_BUCKET, volume)
 
     if not cases_metadata:
         print(f"Skipping volume {volume['volume_number']} due to missing metadata")
@@ -129,7 +132,7 @@ def process_volume(volume, s3_client=production_s3_client):
 def download_pdf(volume, local_path, s3_client=production_s3_client):
     key = f"{volume['reporter_slug']}/{volume['volume_folder']}/{volume['volume_number']}.pdf"
     try:
-        s3_client.download_file(R2_STATIC_BUCKET, key, local_path)
+        s3_client.download_file(READ_BUCKET, key, local_path)
     except Exception as e:
         print(
             f"Error downloading PDF for volume {volume['volume_number']} of {volume['reporter_slug']}: {str(e)}"
@@ -160,8 +163,8 @@ def upload_case_pdfs(case_pdfs, volume, s3_client=production_s3_client):
     for case_name, case_path in case_pdfs:
         key = f"{volume['reporter_slug']}/{volume['volume_folder']}/case-pdfs/{case_name}.pdf"
         try:
-            s3_client.upload_file(case_path, R2_STATIC_BUCKET, key)
-            print(f"Uploaded {key} to {R2_STATIC_BUCKET}")
+            s3_client.upload_file(case_path, WRITE_BUCKET, key)
+            print(f"Uploaded {key} to {WRITE_BUCKET}")
         except Exception as e:
             print(
                 f"Error uploading case PDF {case_name} for volume {volume['volume_number']} of {volume['reporter_slug']}: {str(e)}"

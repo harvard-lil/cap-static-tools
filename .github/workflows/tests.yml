@@ -43,3 +43,4 @@ jobs:
           poetry run pytest
         env:
           R2_STATIC_BUCKET: output
+          R2_SPLIT_PDFS_BUCKET: split-pdfs-output

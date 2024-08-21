@@ -3,7 +3,7 @@ import pytest
 import boto3
 from moto import mock_aws
 
-from tasks.helpers import R2_UNREDACTED_BUCKET, R2_STATIC_BUCKET
+from tasks.helpers import R2_STATIC_BUCKET, R2_SPLIT_PDFS_BUCKET
 
 
 def upload_directory(s3_client, bucket, path, prefix=""):
@@ -31,11 +31,11 @@ def s3_client(aws_credentials):
         s3 = boto3.client("s3", region_name="us-east-1")
 
         # Create the necessary buckets
-        s3.create_bucket(Bucket=R2_UNREDACTED_BUCKET)
         s3.create_bucket(Bucket=R2_STATIC_BUCKET)
+        s3.create_bucket(Bucket=R2_SPLIT_PDFS_BUCKET)
 
         # Upload test data to the unredacted bucket
         test_data_path = os.path.join(os.path.dirname(__file__), "test_data")
-        upload_directory(s3, R2_UNREDACTED_BUCKET, test_data_path)
+        upload_directory(s3, R2_STATIC_BUCKET, test_data_path)
 
         yield s3
