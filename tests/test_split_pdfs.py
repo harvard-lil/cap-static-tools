@@ -10,7 +10,7 @@ import io
 import zipfile
 
 from tasks.split_pdfs import split_pdfs
-from tasks.helpers import R2_UNREDACTED_BUCKET, R2_STATIC_BUCKET
+from tasks.helpers import R2_STATIC_BUCKET, R2_SPLIT_PDFS_BUCKET
 
 
 def print_bucket_contents(s3_client, bucket_name):
@@ -43,7 +43,6 @@ def test_split_pdfs(mock_get_volumes_to_process, mock_get_volumes_metadata, s3_c
     with open(os.path.join(test_data_path, "VolumesMetadata.json"), "r") as f:
         volumes_metadata = json.load(f)
 
-    # Filter for the specific volume we're testing
     test_volume = next(
         v
         for v in volumes_metadata
@@ -53,9 +52,9 @@ def test_split_pdfs(mock_get_volumes_to_process, mock_get_volumes_metadata, s3_c
     mock_get_volumes_metadata.return_value = json.dumps(volumes_metadata)
     mock_get_volumes_to_process.return_value = [test_volume]
 
-    # Create mock buckets
-    s3_client.create_bucket(Bucket=R2_UNREDACTED_BUCKET)
+    # Create mock bucket
     s3_client.create_bucket(Bucket=R2_STATIC_BUCKET)
+    s3_client.create_bucket(Bucket=R2_SPLIT_PDFS_BUCKET)
 
     # Test if mock S3 client is working
     s3_client.put_object(
@@ -65,17 +64,16 @@ def test_split_pdfs(mock_get_volumes_to_process, mock_get_volumes_metadata, s3_c
     assert "Contents" in test_objects, "Mock S3 client is not working as expected"
     s3_client.delete_object(Bucket=R2_STATIC_BUCKET, Key="test_object")
 
-    # Upload the entire test data directory to the mock S3 unredacted bucket
-    upload_directory(s3_client, R2_UNREDACTED_BUCKET, test_data_path)
+    # Upload the entire test data directory to the mock S3 static bucket
+    upload_directory(s3_client, R2_STATIC_BUCKET, test_data_path)
 
-    # Verify the contents of the mock S3 buckets
+    # Verify the contents of the mock S3 bucket
     print("Initial bucket contents:")
-    print_bucket_contents(s3_client, R2_UNREDACTED_BUCKET)
     print_bucket_contents(s3_client, R2_STATIC_BUCKET)
 
     # Print contents of the zip file
     zip_key = "a2d/100.zip"
-    response = s3_client.get_object(Bucket=R2_UNREDACTED_BUCKET, Key=zip_key)
+    response = s3_client.get_object(Bucket=R2_STATIC_BUCKET, Key=zip_key)
     with zipfile.ZipFile(io.BytesIO(response["Body"].read())) as zip_ref:
         print(f"Contents of {zip_key}:")
         for file in zip_ref.namelist():
@@ -104,14 +102,14 @@ def test_split_pdfs(mock_get_volumes_to_process, mock_get_volumes_metadata, s3_c
         traceback.print_exc()
         raise
 
-    # Print the contents of the buckets after running split_pdfs
+    # Print the contents of the bucket after running split_pdfs
     print("\nBucket contents after running split_pdfs:")
-    print_bucket_contents(s3_client, R2_UNREDACTED_BUCKET)
     print_bucket_contents(s3_client, R2_STATIC_BUCKET)
+    print_bucket_contents(s3_client, R2_SPLIT_PDFS_BUCKET)
 
     # Check if case PDFs were created in the static bucket
-    objects = s3_client.list_objects_v2(Bucket=R2_STATIC_BUCKET)
-    print(f"Objects in R2_STATIC_BUCKET: {objects}")
+    objects = s3_client.list_objects_v2(Bucket=R2_SPLIT_PDFS_BUCKET)
+    print(f"Objects in R2_SPLIT_PDFS_BUCKET: {objects}")
 
     assert "Contents" in objects, "No objects found in static bucket"
 
@@ -131,7 +129,7 @@ def test_split_pdfs(mock_get_volumes_to_process, mock_get_volumes_metadata, s3_c
 
     if case_pdf_keys:
         sample_key = case_pdf_keys[0]
-        response = s3_client.get_object(Bucket=R2_STATIC_BUCKET, Key=sample_key)
+        response = s3_client.get_object(Bucket=R2_SPLIT_PDFS_BUCKET, Key=sample_key)
         content = response["Body"].read()
         print(f"\nContent of {sample_key}:")
         print(content[:100])
