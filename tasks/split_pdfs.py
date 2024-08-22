@@ -130,7 +130,7 @@ def process_volume(volume, s3_client=production_s3_client):
 
 
 def download_pdf(volume, local_path, s3_client=production_s3_client):
-    key = f"{volume['reporter_slug']}/{volume['volume_folder']}/{volume['volume_number']}.pdf"
+    key = f"{volume['reporter_slug']}/{volume['volume_number']}.pdf"
     try:
         s3_client.download_file(READ_BUCKET, key, local_path)
     except Exception as e:
