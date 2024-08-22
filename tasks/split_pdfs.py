@@ -118,7 +118,8 @@ def process_volume(volume, s3_client=production_s3_client):
     try:
         case_pdfs = split_pdf(pdf_path, cases_metadata)
         print(f"Split {len(case_pdfs)} case PDFs")
-        upload_case_pdfs(case_pdfs, volume, s3_client)
+        if len(case_pdfs):
+            upload_case_pdfs(case_pdfs, volume, s3_client)
         return f"Processed {len(case_pdfs)} cases for volume {volume['volume_number']}"
     except Exception as e:
         print(
@@ -145,16 +146,17 @@ def split_pdf(pdf_path, cases_metadata):
 
     case_pdfs = []
     for case in cases_metadata:
-        writer = PdfWriter()
-        start_page = case["first_page_order"] - 1
-        end_page = case["last_page_order"]
+        if case["provenance"]["source"] != "Fastcase":
+            writer = PdfWriter()
+            start_page = case["first_page_order"] - 1
+            end_page = case["last_page_order"]
 
-        for page_num in range(start_page, end_page):
-            writer.add_page(reader.pages[page_num])
+            for page_num in range(start_page, end_page):
+                writer.add_page(reader.pages[page_num])
 
-        with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as temp_case_file:
-            writer.write(temp_case_file)
-            case_pdfs.append((case["file_name"], temp_case_file.name))
+            with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as temp_case_file:
+                writer.write(temp_case_file)
+                case_pdfs.append((case["file_name"], temp_case_file.name))
 
     return case_pdfs
 
