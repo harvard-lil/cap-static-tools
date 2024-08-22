@@ -2,7 +2,7 @@ import os
 import zipfile
 import io
 from invoke import task
-from PyPDF2 import PdfReader, PdfWriter
+from pypdf import PdfReader, PdfWriter
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from tqdm import tqdm
 import json
