@@ -111,23 +111,27 @@ def process_volume(volume, s3_client=production_s3_client):
         print(f"Skipping volume {volume['volume_number']} due to missing metadata")
         return
 
-    with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as temp_file:
-        pdf_path = temp_file.name
-        download_pdf(volume, pdf_path, s3_client)
+    if not all([case["provenance"]["source"] == "Fastcase" for case in cases_metadata]):
+        with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as temp_file:
+            pdf_path = temp_file.name
+            download_pdf(volume, pdf_path, s3_client)
 
-    try:
-        case_pdfs = split_pdf(pdf_path, cases_metadata)
-        print(f"Split {len(case_pdfs)} case PDFs")
-        if len(case_pdfs):
-            upload_case_pdfs(case_pdfs, volume, s3_client)
-        return f"Processed {len(case_pdfs)} cases for volume {volume['volume_number']}"
-    except Exception as e:
-        print(
-            f"Error processing volume {volume['volume_number']} of {volume['reporter_slug']}: {str(e)}"
-        )
-        return f"Error processing volume {volume['volume_number']}: {str(e)}"
-    finally:
-        os.unlink(pdf_path)
+        try:
+            case_pdfs = split_pdf(pdf_path, cases_metadata)
+            print(f"Split {len(case_pdfs)} case PDFs")
+            if len(case_pdfs):
+                upload_case_pdfs(case_pdfs, volume, s3_client)
+            return f"Processed {len(case_pdfs)} cases for volume {volume['volume_number']}"
+        except Exception as e:
+            print(
+                f"Error processing volume {volume['volume_number']} of {volume['reporter_slug']}: {str(e)}"
+            )
+            return f"Error processing volume {volume['volume_number']}: {str(e)}"
+        finally:
+            os.unlink(pdf_path)
+    else:
+        print(f"Skipping all-Fastcase volume {volume['volume_number']}")
+        return
 
 
 def download_pdf(volume, local_path, s3_client=production_s3_client):
