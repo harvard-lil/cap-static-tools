@@ -62,7 +62,8 @@ def get_case_files_of_volume(reporter, volume, file_type, bucket):
 
     for page in r2_paginator.paginate(Bucket=bucket, Prefix=prefix, PaginationConfig={"PageSize": 1000}):
         for item in page["Contents"]:
-            files_for_volumes.append(item["Key"])
+            if "/index.html" not in item["Key"]:
+                files_for_volumes.append(item["Key"])
 
     return files_for_volumes
 
