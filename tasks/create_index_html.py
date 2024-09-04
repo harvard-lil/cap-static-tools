@@ -158,7 +158,7 @@ def create_volume_root_level_html(item):
 
     for location in item['file_location']:
         href = f"{CAP_STATIC_BASE_URL}{item['reporter']}/{item['volume']}/{location}"
-        if location in ['cases', 'html']:
+        if location in ['cases', 'html', 'case-pdfs']:
             href = f"{href}/"
         html += f"<tr><td><a href='{href}'>{location}</a></td></tr>"
     html += "</table>"
@@ -168,7 +168,7 @@ def create_volume_root_level_html(item):
 
 def create_volume_cases_level_html(item):
     """
-    Creates html for volume cases level - cases and html folders
+    Creates html for volume cases level - cases, html and case-pdfs folders
     """
     html = ("<style>table {width: 100%;}td, th {text-align: left;} th {padding-top: 5px; padding-bottom: 14px} ul {"
             "font-size: 1.50em; font-weight: bold; padding: 0} li {display: inline;}</style>")
@@ -231,7 +231,10 @@ def create_grouped_dataframe(files):
     volume_root_level_df = df.groupby(["reporter", "volume"], as_index=False).agg(list)
     volume_cases_level_df = df.groupby(["reporter", "volume", "file_location"], as_index=False).agg(list)
     volume_cases_level_df = volume_cases_level_df[
-        (volume_cases_level_df['file_location'] == "cases") | (volume_cases_level_df['file_location'] == "html")]
+        (volume_cases_level_df['file_location'] == "cases") |
+        (volume_cases_level_df['file_location'] == "html") |
+        (volume_cases_level_df['file_location'] == "case-pdfs")
+    ]
 
     volume_root_level_df['html'] = volume_root_level_df.apply(lambda row: create_volume_root_level_html(row), axis=1)
     volume_cases_level_df['html'] = volume_cases_level_df.apply(lambda row: create_volume_cases_level_html(row), axis=1)
