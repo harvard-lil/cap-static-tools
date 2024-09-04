@@ -12,8 +12,8 @@ from .helpers import get_volumes_metadata, r2_s3_client, r2_paginator
 zip_lock = threading.Lock()
 
 
-@task(default=True)
-def zip_volumes(r2_bucket):
+@task
+def zip_volumes(ctx, r2_bucket):
     """ Downloads data for each volume from r2, zips, and uploads. """
     volumes = json.loads(get_volumes_metadata(r2_bucket))
     volume_counter = 0
@@ -40,12 +40,12 @@ def zip_volumes(r2_bucket):
                     for file, folder in file_folder_pairs
                 ]
                 concurrent.futures.wait(futures)
-        bytes_io.seek(0)
+        volume_zip = bytes_io.getvalue()
 
         # upload zip
         file_name = f"{reporter}/{volume}.zip"
         try:
-            r2_s3_client.upload_fileobj(bytes_io, file_name)
+            r2_s3_client.upload_fileobj(io.BytesIO(volume_zip), r2_bucket, file_name)
         except ClientError as e:
             print(f"File upload error for: {file_name}: {e}")
 
