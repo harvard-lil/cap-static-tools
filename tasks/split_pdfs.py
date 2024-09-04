@@ -20,7 +20,7 @@ WRITE_BUCKET = R2_SPLIT_PDFS_BUCKET
 
 
 @task
-def split_pdfs(ctx, reporter=None, publication_year=None, s3_client=None):
+def split_pdfs(ctx, reporter=None, volume=None, publication_year=None, s3_client=None):
     """Split PDFs into individual case files for all jurisdictions or a specific reporter."""
     print(
         f"Starting split_pdfs task for reporter: {reporter}, year: {publication_year}"
@@ -28,7 +28,7 @@ def split_pdfs(ctx, reporter=None, publication_year=None, s3_client=None):
     if s3_client is None:
         s3_client = production_s3_client
 
-    volumes_to_process = get_volumes_to_process(reporter, publication_year, s3_client)
+    volumes_to_process = get_volumes_to_process(reporter, volume, publication_year, s3_client)
     print(f"Volumes to process: {volumes_to_process}")
 
     total_volumes = len(volumes_to_process)
@@ -36,8 +36,8 @@ def split_pdfs(ctx, reporter=None, publication_year=None, s3_client=None):
 
     with ThreadPoolExecutor(max_workers=os.cpu_count()) as executor:
         futures = [
-            executor.submit(process_volume, volume, s3_client)
-            for volume in volumes_to_process
+            executor.submit(process_volume, v, s3_client)
+            for v in volumes_to_process
         ]
 
         for future in tqdm(
@@ -53,13 +53,21 @@ def split_pdfs(ctx, reporter=None, publication_year=None, s3_client=None):
 
 
 def get_volumes_to_process(
-    reporter=None, publication_year=None, s3_client=None, r2_bucket=READ_BUCKET
+    reporter=None, volume=None, publication_year=None, s3_client=None, r2_bucket=READ_BUCKET
 ):
+    if volume and reporter is None:
+        print("You have specified volume but no reporter. This is probably not what you want.")
+        return []
+
     volumes_metadata = json.loads(get_volumes_metadata(r2_bucket))
 
     if reporter:
         volumes_metadata = [
             v for v in volumes_metadata if v["reporter_slug"] == reporter
+        ]
+    if volume:
+        volumes_metadata = [
+            v for v in volumes_metadata if v["volume_folder"] == volume
         ]
     if publication_year:
         volumes_metadata = [

@@ -47,6 +47,8 @@ Options:
 
 - `--reporter`: Specify a reporter slug to process only volumes from that
   reporter.
+- `--volume`: Specify a volume slug (along with `--reporter`) to process
+  only a specific volume from that reporter.
 - `--publication-year`: Specify a year to process only volumes published in that
   year.
 
@@ -54,6 +56,7 @@ Examples:
 
 - Process all volumes: `inv split-pdfs.split-pdfs`
 - Process volumes from a specific reporter: `inv split-pdfs.split-pdfs --reporter cal`
+- Process volumes from a specific volume: `inv split-pdfs.split-pdfs --reporter pa --volume 81-12`
 - Process volumes from a specific year: `inv split-pdfs.split-pdfs --publication-year 2023`
 
 ## Develop
