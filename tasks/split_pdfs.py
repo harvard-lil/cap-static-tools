@@ -80,7 +80,7 @@ def get_volumes_to_process(
 
 
 def get_cases_metadata(s3_client, bucket, volume):
-    zip_key = f"{volume['reporter_slug']}/{volume['volume_number']}.zip"
+    zip_key = f"{volume['reporter_slug']}/{volume['volume_folder']}.zip"
     unzipped_key = (
         f"{volume['reporter_slug']}/{volume['volume_folder']}/CasesMetadata.json"
     )
@@ -116,7 +116,7 @@ def process_volume(volume, s3_client=production_s3_client):
     cases_metadata = get_cases_metadata(s3_client, READ_BUCKET, volume)
 
     if not cases_metadata:
-        print(f"Skipping volume {volume['volume_number']} due to missing metadata")
+        print(f"Skipping volume {volume['volume_folder']} due to missing metadata")
         return
 
     if not all([case["provenance"]["source"] == "Fastcase" for case in cases_metadata]):
@@ -129,26 +129,26 @@ def process_volume(volume, s3_client=production_s3_client):
             print(f"Split {len(case_pdfs)} case PDFs")
             if len(case_pdfs):
                 upload_case_pdfs(case_pdfs, volume, s3_client)
-            return f"Processed {len(case_pdfs)} cases for volume {volume['volume_number']}"
+            return f"Processed {len(case_pdfs)} cases for volume {volume['volume_folder']}"
         except Exception as e:
             print(
-                f"Error processing volume {volume['volume_number']} of {volume['reporter_slug']}: {str(e)}"
+                f"Error processing volume {volume['volume_folder']} of {volume['reporter_slug']}: {str(e)}"
             )
-            return f"Error processing volume {volume['volume_number']}: {str(e)}"
+            return f"Error processing volume {volume['volume_folder']}: {str(e)}"
         finally:
             os.unlink(pdf_path)
     else:
-        print(f"Skipping all-Fastcase volume {volume['volume_number']}")
+        print(f"Skipping all-Fastcase volume {volume['volume_folder']}")
         return
 
 
 def download_pdf(volume, local_path, s3_client=production_s3_client):
-    key = f"{volume['reporter_slug']}/{volume['volume_number']}.pdf"
+    key = f"{volume['reporter_slug']}/{volume['volume_folder']}.pdf"
     try:
         s3_client.download_file(READ_BUCKET, key, local_path)
     except Exception as e:
         print(
-            f"Error downloading PDF for volume {volume['volume_number']} of {volume['reporter_slug']}: {str(e)}"
+            f"Error downloading PDF for volume {volume['volume_folder']} of {volume['reporter_slug']}: {str(e)}"
         )
         raise
 
@@ -181,7 +181,7 @@ def upload_case_pdfs(case_pdfs, volume, s3_client=production_s3_client):
             print(f"Uploaded {key} to {WRITE_BUCKET}")
         except Exception as e:
             print(
-                f"Error uploading case PDF {case_name} for volume {volume['volume_number']} of {volume['reporter_slug']}: {str(e)}"
+                f"Error uploading case PDF {case_name} for volume {volume['volume_folder']} of {volume['reporter_slug']}: {str(e)}"
             )
         finally:
             os.unlink(case_path)
