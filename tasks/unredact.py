@@ -1,5 +1,5 @@
 import json
-
+from datetime import datetime, timezone
 from invoke import task
 
 from .helpers import get_volumes_metadata, get_reporter_volumes_metadata, R2_STATIC_BUCKET, R2_UNREDACTED_BUCKET, \
@@ -80,11 +80,14 @@ def update_redacted_field_of_volume(ctx, reporter=None, publication_year=None, d
 
     if volumes_to_unredact and not dry_run:
         volumes_metadata = json.loads(get_volumes_metadata(R2_STATIC_BUCKET))
+        # Format example: 2024-01-01T00:00:00+00:00
+        current_time = datetime.now(timezone.utc).isoformat()
 
         for item in volumes_to_unredact:
             for volume in volumes_metadata:
                 if item["id"] == volume["id"]:
                     volume["redacted"] = False
+                    volume["last_updated"] = current_time
 
         r2_s3_client.put_object(Bucket=R2_STATIC_BUCKET, Body=json.dumps(volumes_metadata), Key="VolumesMetadata.json",
                                 ContentType="application/json")
@@ -95,6 +98,7 @@ def update_redacted_field_of_volume(ctx, reporter=None, publication_year=None, d
                 for volume in reporter_volumes_metadata:
                     if item["id"] == volume["id"]:
                         volume["redacted"] = False
+                        volume["last_updated"] = current_time
 
             r2_s3_client.put_object(Bucket=R2_STATIC_BUCKET, Body=json.dumps(reporter_volumes_metadata),
                                     Key=f"{reporter}/VolumesMetadata.json", ContentType="application/json")
@@ -106,6 +110,7 @@ def update_redacted_field_of_volume(ctx, reporter=None, publication_year=None, d
                 for volume in reporter_volumes_metadata:
                     if item["id"] == volume["id"]:
                         volume["redacted"] = False
+                        volume["last_updated"] = current_time
 
                 r2_s3_client.put_object(Bucket=R2_STATIC_BUCKET, Body=json.dumps(reporter_volumes_metadata),
                                         Key=f"{item['reporter']}/VolumesMetadata.json", ContentType="application/json")
@@ -251,3 +256,49 @@ def filter_for_newest_tars():
             unique_items.append(newest_item)
 
     return {f"{file['volume_id']}/{file['extension']}/": file for file in unique_items}
+
+
+@task
+def add_last_updated_field(ctx, dry_run=False):
+    """ Adds last_updated field to all volumes in VolumesMetadata.json files.
+    If dry_run is True, only prints what would be updated. """
+    current_time = datetime.now(timezone.utc).isoformat()
+
+    # Update main VolumesMetadata.json
+    volumes_metadata = json.loads(get_volumes_metadata(R2_STATIC_BUCKET))
+    updated_count = 0
+
+    for volume in volumes_metadata:
+        if "last_updated" not in volume:
+            volume["last_updated"] = current_time
+            updated_count += 1
+
+    print(f"Would update {updated_count} volumes in main VolumesMetadata.json")
+
+    if not dry_run:
+        r2_s3_client.put_object(Bucket=R2_STATIC_BUCKET, Body=json.dumps(volumes_metadata), Key="VolumesMetadata.json",
+                                ContentType="application/json")
+        print("Updated main VolumesMetadata.json")
+
+    # Update reporter-specific metadata files
+    reporters = set(vol["reporter_slug"] for vol in volumes_metadata)
+
+    for reporter in reporters:
+        try:
+            reporter_metadata = json.loads(get_reporter_volumes_metadata(R2_STATIC_BUCKET, reporter))
+            reporter_updated_count = 0
+
+            for volume in reporter_metadata:
+                if "last_updated" not in volume:
+                    volume["last_updated"] = current_time
+                    reporter_updated_count += 1
+
+            print(f"Would update {reporter_updated_count} volumes in {reporter}/VolumesMetadata.json")
+
+            if not dry_run:
+                r2_s3_client.put_object(Bucket=R2_STATIC_BUCKET, Body=json.dumps(reporter_metadata),
+                                        Key=f"{reporter}/VolumesMetadata.json", ContentType="application/json")
+                print(f"Updated {reporter}/VolumesMetadata.json")
+
+        except Exception as e:
+            print(f"Error processing {reporter}: {e}")
