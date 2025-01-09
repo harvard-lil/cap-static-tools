@@ -18,8 +18,8 @@ RCLONE_R2_UNREDACTED_BASE_URL = f"cap_r2:{R2_UNREDACTED_BUCKET}/"
 RCLONE_R2_CAP_STATIC_BASE_URL = f"cap_r2:{R2_STATIC_BUCKET}/"
 S3_CAPTAR_REDACTED_FOLDER = os.environ.get("S3_CAPTAR_REDACTED_FOLDER")
 S3_CAPTAR_UNREDACTED_FOLDER = os.environ.get("S3_CAPTAR_UNREDACTED_FOLDER")
-S3_PDF_FOLDER = os.environ.get("S3_PDF_FOLDER")
 OBJECT_PATHS_FILE = os.environ.get("OBJECT_PATHS_FILE")
+VOLUMES_TO_UNREDACT_FILE = os.environ.get("VOLUMES_TO_UNREDACT_FILE")
 CAP_STATIC_BASE_URL = os.environ.get("CAP_STATIC_BASE_URL")
 
 # clients
@@ -65,6 +65,16 @@ def write_paths_to_file(files, file_name=OBJECT_PATHS_FILE):
             file.write(f"{file_pair['source']} {file_pair['destination']}\n")
 
     print(f"{len(files)} path pairs were written to txt file.")
+
+def write_volumes_to_file(volumes, file_name=VOLUMES_TO_UNREDACT_FILE):
+    """
+    Writes volume reporter and folder information to file
+    """
+    with open(file_name, "w") as file:
+        for volume in volumes:
+            file.write(f"{volume['reporter']}/{volume['volume_folder']}\n")
+
+    print(f"{len(volumes)} volumes were written to txt file.")
 
 
 def get_reporter_volumes_metadata(bucket, reporter):
