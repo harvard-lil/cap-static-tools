@@ -29,7 +29,7 @@ Use `inv` to run tasks defined in `tasks/`:
           unredact.pdf-paths                         Creates file path pairs to copy unredacted pdfs from S3 to r2 unredacted bucket.
           unredact.tar-paths                         Creates file path pairs to copy unredacted tars to r2 unredacted bucket.
           unredact.unredact-volumes                  Creates file path pairs to copy unredacted volume files from r2 unredacted bucket to static bucket.
-          unredact.update-volume-fields              Updates the redacted abd last_updated fields in top level and reporter level metadata files.
+          unredact.update-volume-fields              Updates the redacted and last_updated fields in top level and reporter level metadata files.
           
           unredact.add-last-updated-field            Populates VolumesMetadata.json files with last_updated field.
           zip-volumes.zip-volumes (zip-volumes)      Downloads data for each volume from r2, zips, and uploads.
